@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<br />
+	<f:facet name="first">
+		<meta name="viewport"
+			content="width=device-width, intial-scale=1, shrink-to-fit=no, user-sacalable=no" />
+		<title>Manejo de datos</title>
+	</f:facet>
+</h:head>
+<body>
+	<p:growl>
+		<p:autoUpdate />
+	</p:growl>
+	<h:form id="form">
+		<p:panel header="Registro Nuevo Tipo Cuenta	" style="width:600px">
+			<p:panelGrid columns="2">
+				<h:outputText value="Nombre Estado Cuenta:" />
+				<p:inputText value="#{beanTipoCuenta.tipoCuenta.nombreTipoCuenta}"
+					required="true" />
+				<br />
+				<p:commandButton value="Insertar" icon="fa fa-save"
+					update="@form,:form2"
+					actionListener="#{beanTipoCuenta.actionListenerInsertarTipoCuenta()}"></p:commandButton>
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+	<br />
+	<h:form id="form2">
+		<p:panel header="TIPO CUENTAS" style="width:470px">
+			<p:dataTable value="#{beanTipoCuenta.listaTipoCuenta}"
+				var="tipoCuenta">
+
+				<p:column headerText="NOMBRE TIPO CUENTA">
+					<h:outputText value="#{tipoCuenta.nombreTipoCuenta}" />
+				</p:column>
+
+				<p:column headerText="OPCIONES">
+					<p:commandButton icon="fa fa-close" title="eliminar" update="@form"
+						actionListener="#{beanTipoCuenta.actionListenerEliminarTipoCuenta(tipoCuenta.idTipoCuenta)}">
+						<p:confirm header="Confirmación" message="Desea eliminar?"
+							icon="fa fa-exclamation-triangle"></p:confirm>
+					</p:commandButton>
+					<p:commandButton icon="fa fa-edit" title="Editar"
+						actionListener="#{beanTipoCuenta.actionListenerSeleccionarTipoCuenta(tipoCuenta)}"
+						update=":formEdicion" oncomplete="PF('dlgEdicion').show();"></p:commandButton>
+
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+	
+	<p:dialog header="Editar Información" widgetVar="dlgEdicion"
+		modal="true">
+		<h:form id="formEdicion">
+			<p:growl>
+				<p:autoUpdate></p:autoUpdate>
+			</p:growl>
+			<p:panelGrid columns="2">
+				<h:outputText value="Nombre Tipo Cuenta" />
+				<p:inputText
+					value="#{beanTipoCuenta.tipoCuentaSeleccionada.nombreTipoCuenta}"></p:inputText>
+	    	</p:panelGrid>
+			<p:commandButton value="Actualizar" icon="fa fa-save"
+				update="@form,:form2"
+				actionListener="#{beanTipoCuenta.actionListenerActualizarTipoCuenta()}"></p:commandButton>
+		</h:form>
+	</p:dialog>
+
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		<p:commandButton value="SI" type="button"
+			styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+		<p:commandButton value="NO" type="button"
+			styleClass="ui-confirmdialog-no" icon="fa fa-times" />
+	</p:confirmDialog>
+	<p:commandButton onclick="location.href='index.html'" value="REGRESAR"></p:commandButton>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence 
+http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="bddahorroycreditoDS" transaction-type="JTA">
+	<jta-data-source>java:/bddahorroycreditoDS</jta-data-source>
+	<class>proyecto.model.entities.Auditoria</class>
+	<class>proyecto.model.entities.CuentaCliente</class>
+	<class>proyecto.model.entities.Cuota</class>
+	<class>proyecto.model.entities.Empresa</class>
+	<class>proyecto.model.entities.EstadoCuenta</class>
+	<class>proyecto.model.entities.Prestamo</class>
+	<class>proyecto.model.entities.Rol</class>
+	<class>proyecto.model.entities.SolicitudP</class>
+	<class>proyecto.model.entities.TipoCuenta</class>
+	<class>proyecto.model.entities.TipoTransaccion</class>
+	<class>proyecto.model.entities.Transaccion</class>
+	<class>proyecto.model.entities.Usuario</class>
+	
+	</persistence-unit>
+</persistence>

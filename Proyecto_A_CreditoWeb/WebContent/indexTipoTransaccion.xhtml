@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<br />
+	<f:facet name="first">
+		<meta name="viewport"
+			content="width=device-width, intial-scale=1, shrink-to-fit=no, user-sacalable=no" />
+		<title>Manejo de datos </title>
+	</f:facet>
+</h:head>
+<body>
+	<p:growl>
+		<p:autoUpdate />
+	</p:growl>
+	<p:panel header="Registro Nuevo Tipo Transacción	" style="width:600px">
+		<h:form id="form">
+			
+			<p:panelGrid columns="2">
+
+				<h:outputText value="Nombre transacción:" />
+				<p:inputText
+					value="#{beanTipoTransaccion.tipoTransaccion.nombreTipoTransaccion}" required="true" />
+					
+		<h:outputText value="Tipo Operación:" />
+        <p:selectOneMenu value="#{beanTipoTransaccion.tipoTransaccion.tipoOperacion}"  required="true" style="width:125px">
+            <f:selectItem itemLabel="Seleccione" noSelecctionOption="true" />
+            <f:selectItem itemLabel="+" itemValue="+" />
+            <f:selectItem itemLabel="-" itemValue="-" />
+            
+        </p:selectOneMenu>
+                
+			</p:panelGrid>
+			<br />
+			<p:commandButton value="Insertar" icon="fa fa-save"
+				update="@form,:form2"
+				actionListener="#{beanTipoTransaccion.actionListenerInsertarTipoTransaccion()}"></p:commandButton>
+
+
+		</h:form>
+
+		<br />
+		<p:panel header="TIPO TRANSACCIONES" style="width:470px">
+			<h:form id="form2">
+
+
+				<p:dataTable value="#{beanTipoTransaccion.listaTipoTransaccion}"
+					var="tipoTransaccion">
+
+					<p:column headerText="NOMBRE TIPO TRANSACCIÓN">
+						<h:outputText value="#{tipoTransaccion.nombreTipoTransaccion}" />
+					</p:column>
+					
+
+					<p:column headerText="TIPO OPERACIÓN">
+						<h:outputText value="#{tipoTransaccion.tipoOperacion} "  />
+					</p:column>
+					<p:column headerText="OPCIONES">
+						<p:commandButton icon="fa fa-close" title="eliminar"
+							update="@form"
+							actionListener="#{beanTipoTransaccion.actionListenerEliminarTipoTransaccion(tipoTransaccion.idTipoTransaccion)}">
+							<p:confirm header="Confirmación" message="Desea eliminar?"
+								icon="fa fa-exclamation-triangle"></p:confirm>
+						</p:commandButton>
+						<p:commandButton icon="fa fa-edit" title="Editar"
+							actionListener="#{beanTipoTransaccion.actionListenerSeleccionarTipoTransaccion(tipoTransaccion)}"
+							update=":formEdicion" oncomplete="PF('dlgEdicion').show();"></p:commandButton>
+
+					</p:column>
+				</p:dataTable>
+
+			</h:form>
+			<p:dialog header="Editar Información" widgetVar="dlgEdicion"
+				modal="true">
+
+				<h:form id="formEdicion">
+					<p:growl>
+						<p:autoUpdate></p:autoUpdate>
+					</p:growl>
+					<p:panelGrid columns="2">
+						<h:outputText value="Nombre Tipo Transación" />
+						<p:inputText
+							value="#{beanTipoTransaccion.tipoTrasaccionSeleccionado.nombreTipoTransaccion}"></p:inputText>
+						<h:outputText value="Tipo Operación" />
+						<p:inputText
+							value="#{beanTipoTransaccion.tipoTrasaccionSeleccionado.tipoOperacion}"></p:inputText>
+					</p:panelGrid>
+					<p:commandButton value="Actualizar" icon="fa fa-save"
+						update="@form,:form2"
+						actionListener="#{beanTipoTransaccion.actionListenerActualizarTipoTransaccion()}"></p:commandButton>
+				</h:form>
+			</p:dialog>
+		</p:panel>
+
+	</p:panel>
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		<p:commandButton value="SI" type="button"
+			styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+		<p:commandButton value="NO" type="button"
+			styleClass="ui-confirmdialog-no" icon="fa fa-times" />
+	</p:confirmDialog>
+		<p:commandButton onclick="location.href='index.html'" value="REGRESAR"></p:commandButton>
+	
+</body>
+</html>
