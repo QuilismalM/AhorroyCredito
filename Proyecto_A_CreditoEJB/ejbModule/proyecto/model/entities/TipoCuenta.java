@@ -16,7 +16,7 @@ public class TipoCuenta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TIPO_CUENTA_IDTIPOCUENTA_GENERATOR", sequenceName="SEQ_TIPO_CUENTA",allocationSize = 1)
+	@SequenceGenerator(name="TIPO_CUENTA_IDTIPOCUENTA_GENERATOR", sequenceName="SEQ_TIPO_CUENTA")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TIPO_CUENTA_IDTIPOCUENTA_GENERATOR")
 	@Column(name="id_tipo_cuenta", unique=true, nullable=false)
 	private Integer idTipoCuenta;

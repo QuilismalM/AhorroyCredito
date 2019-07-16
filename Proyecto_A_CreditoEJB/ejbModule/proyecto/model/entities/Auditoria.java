@@ -16,7 +16,7 @@ public class Auditoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="AUDITORIA_IDAUDITORIA_GENERATOR", sequenceName="SEQ_AUDITORIA",allocationSize = 1)
+	@SequenceGenerator(name="AUDITORIA_IDAUDITORIA_GENERATOR", sequenceName="SEQ_AUDITORIA")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="AUDITORIA_IDAUDITORIA_GENERATOR")
 	@Column(name="id_auditoria", unique=true, nullable=false)
 	private Integer idAuditoria;

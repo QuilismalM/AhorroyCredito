@@ -17,7 +17,7 @@ public class CuentaCliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="CUENTA_CLIENTE_NROCUENTACL_GENERATOR", sequenceName="SEQ_CUENTA_CLIENTE",allocationSize = 1)
+	@SequenceGenerator(name="CUENTA_CLIENTE_NROCUENTACL_GENERATOR", sequenceName="SEQ_CUENTA_CLIENTE")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CUENTA_CLIENTE_NROCUENTACL_GENERATOR")
 	@Column(name="nro_cuenta_cl", unique=true, nullable=false)
 	private Integer nroCuentaCl;

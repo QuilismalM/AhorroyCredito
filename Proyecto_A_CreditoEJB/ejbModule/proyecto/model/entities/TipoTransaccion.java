@@ -16,7 +16,7 @@ public class TipoTransaccion implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TIPO_TRANSACCION_IDTIPOTRANSACCION_GENERATOR", sequenceName="SEQ_TIPO_TRANSACCION",allocationSize = 1)
+	@SequenceGenerator(name="TIPO_TRANSACCION_IDTIPOTRANSACCION_GENERATOR", sequenceName="SEQ_TIPO_TRANSACCION")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TIPO_TRANSACCION_IDTIPOTRANSACCION_GENERATOR")
 	@Column(name="id_tipo_transaccion", unique=true, nullable=false)
 	private Integer idTipoTransaccion;

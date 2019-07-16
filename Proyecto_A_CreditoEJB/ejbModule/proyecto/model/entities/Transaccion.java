@@ -32,6 +32,9 @@ public class Transaccion implements Serializable {
 	@Column(name="monto_transaccion", precision=10, scale=2)
 	private BigDecimal montoTransaccion;
 
+	@Column(name="saldo_transaccion", nullable=false)
+	private Integer saldoTransaccion;
+
 	//bi-directional many-to-one association to CuentaCliente
 	@ManyToOne
 	@JoinColumn(name="nro_cuenta_cl", nullable=false)
@@ -75,6 +78,14 @@ public class Transaccion implements Serializable {
 
 	public void setMontoTransaccion(BigDecimal montoTransaccion) {
 		this.montoTransaccion = montoTransaccion;
+	}
+
+	public Integer getSaldoTransaccion() {
+		return this.saldoTransaccion;
+	}
+
+	public void setSaldoTransaccion(Integer saldoTransaccion) {
+		this.saldoTransaccion = saldoTransaccion;
 	}
 
 	public CuentaCliente getCuentaCliente() {

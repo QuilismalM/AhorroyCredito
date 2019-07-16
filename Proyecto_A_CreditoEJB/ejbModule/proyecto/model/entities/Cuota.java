@@ -17,7 +17,7 @@ public class Cuota implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="CUOTAS_IDCUOTA_GENERATOR", sequenceName="SEQ_CUOTAS",allocationSize = 1)
+	@SequenceGenerator(name="CUOTAS_IDCUOTA_GENERATOR", sequenceName="SEQ_CUOTAS")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CUOTAS_IDCUOTA_GENERATOR")
 	@Column(name="id_cuota", unique=true, nullable=false)
 	private Integer idCuota;

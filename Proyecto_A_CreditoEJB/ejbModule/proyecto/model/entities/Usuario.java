@@ -24,6 +24,9 @@ public class Usuario implements Serializable {
 	@Column(name="apellido_usuario", nullable=false, length=50)
 	private String apellidoUsuario;
 
+	@Column(name="cedula_usuario", length=10)
+	private String cedulaUsuario;
+
 	@Column(length=15)
 	private String contrasena;
 
@@ -77,6 +80,14 @@ public class Usuario implements Serializable {
 
 	public void setApellidoUsuario(String apellidoUsuario) {
 		this.apellidoUsuario = apellidoUsuario;
+	}
+
+	public String getCedulaUsuario() {
+		return this.cedulaUsuario;
+	}
+
+	public void setCedulaUsuario(String cedulaUsuario) {
+		this.cedulaUsuario = cedulaUsuario;
 	}
 
 	public String getContrasena() {

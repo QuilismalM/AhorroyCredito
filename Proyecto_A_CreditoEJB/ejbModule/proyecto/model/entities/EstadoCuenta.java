@@ -16,7 +16,7 @@ public class EstadoCuenta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="ESTADO_CUENTA_IDESTADOCUENTA_GENERATOR", sequenceName="SEQ_ESTADO_CUENTA",allocationSize = 1)
+	@SequenceGenerator(name="ESTADO_CUENTA_IDESTADOCUENTA_GENERATOR", sequenceName="SEQ_ESTADO_CUENTA")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ESTADO_CUENTA_IDESTADOCUENTA_GENERATOR")
 	@Column(name="id_estado_cuenta", unique=true, nullable=false)
 	private Integer idEstadoCuenta;
